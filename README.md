@@ -103,7 +103,8 @@ We already did this:
 4. Inside the file where you need to use it
    import { toast } from "react-toastify";
 5. Output error messages with
-   toast.error("Something went wrong")
+   toast.error("Something went§ wrong")
 
 # UUID allready installed with package.json
+
 # hsa-firebase-tailwind
