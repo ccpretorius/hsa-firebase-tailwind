@@ -179,3 +179,10 @@ return <Spinner />;
 }
 return loggedIn ? <Outlet /> : <Navigate to="/login" />;
 }
+
+# Adjust Private Route to accept permissions from an administrator that determines access to certain pages for certain users.
+
+- keep the rules the same
+- add permissions to firebase
+- adjust the auth hook for the private route
+- adjust the routes in App.js
