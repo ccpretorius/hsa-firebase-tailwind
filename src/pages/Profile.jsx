@@ -14,10 +14,25 @@ export default function Profile() {
     email: auth.currentUser.email,
   });
   const { name, email } = formData;
+
+  // function onLogout() {
+  //   auth.signOut();
+  //   navigate("/");
+  // }
   function onLogout() {
-    auth.signOut();
-    navigate("/");
+    auth
+      .signOut()
+      .then(() => {
+        navigate("/login");
+        // You can also force a refresh here to ensure a clean state, but it's usually not necessary.
+        // window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Logout Error:", error);
+        toast.error("Failed to log out.");
+      });
   }
+
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
@@ -52,26 +67,11 @@ export default function Profile() {
           <form>
             {/* Name Input */}
 
-            <input
-              type="text"
-              id="name"
-              value={name}
-              disabled={!changeDetail}
-              onChange={onChange}
-              className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${
-                changeDetail && "bg-red-200 focus:bg-red-200"
-              }`}
-            />
+            <input type="text" id="name" value={name} disabled={!changeDetail} onChange={onChange} className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${changeDetail && "bg-red-200 focus:bg-red-200"}`} />
 
             {/* Email Input */}
 
-            <input
-              type="email"
-              id="email"
-              value={email}
-              disabled
-              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out"
-            />
+            <input type="email" id="email" value={email} disabled className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out" />
 
             <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
               <p className="flex items-center ">
@@ -86,10 +86,7 @@ export default function Profile() {
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
-              <p
-                onClick={onLogout}
-                className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer"
-              >
+              <p onClick={onLogout} className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer">
                 Sign out
               </p>
             </div>

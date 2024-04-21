@@ -28,7 +28,9 @@ export default function Login() {
         navigate("/");
       }
     } catch (error) {
-      toast.error("Bad user credentials");
+      //toast.error("Bad user credentials");
+      console.error(error);
+      toast.error(error.message);
     }
   }
   return (
