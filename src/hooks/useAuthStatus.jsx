@@ -6,9 +6,11 @@ import { db } from "../firebase"; // Ensure you're importing your Firestore inst
 export function useAuthStatus() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [checkingStatus, setCheckingStatus] = useState(true);
-  const [permissions, setPermissions] = useState({ home: false, offers: false }); // Default permissions
+  const [permissions, setPermissions] = useState({ home: false, offers: false, admin: false }); // Default permissions
 
   useEffect(() => {
+    console.log("Auth state change detected");
+
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -18,12 +20,13 @@ export function useAuthStatus() {
         if (userDoc.exists()) {
           // Set permissions based on the user document
           const userData = userDoc.data();
-          setPermissions(userData.permissions || { home: false, offers: false });
+          setPermissions(userData.permissions || { home: false, offers: false, admin: false });
+          console.log("In hook: Permissions fetched from Firestore", userData.permissions);
         }
         setLoggedIn(true);
       } else {
         // Reset permissions if no user is logged in
-        setPermissions({ home: false, offers: false });
+        setPermissions({ home: false, offers: false, admin: false });
       }
       setCheckingStatus(false);
     });

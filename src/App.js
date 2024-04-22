@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -7,9 +8,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword";
 import Offers from "./pages/Offers";
 import Header from "./components/Header";
+import Unauthorized from "./pages/Unauthorized";
+import AdminPage from "./pages/AdminPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Unauthorized from "./pages/Unauthorized";
 
 function App() {
   return (
@@ -18,21 +20,50 @@ function App() {
         <Header />
         <Routes>
           {/* Home page with permissions check */}
-          <Route path="/" element={<PrivateRoute requiredPermission="home" />}>
-            <Route path="/" element={<Home />} />
-          </Route>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute requiredPermission="home">
+                <Home />
+              </PrivateRoute>
+            }
+          />
+
           {/* Profile page accessible to any logged-in user */}
-          <Route path="/profile" element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />} />
-          </Route>
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+
           {/* Unprotected routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+
           {/* Offers page with permissions check */}
-          <Route path="/offers" element={<PrivateRoute requiredPermission="offers" />}>
-            <Route path="/offers" element={<Offers />} />
-          </Route>
+          <Route
+            path="/offers"
+            element={
+              <PrivateRoute requiredPermission="offers">
+                <Offers />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Admin page with permissions check */}
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute requiredPermission="admin">
+                <AdminPage />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
       </Router>

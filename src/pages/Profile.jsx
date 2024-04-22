@@ -56,7 +56,8 @@ export default function Profile() {
       }
       toast.success("Profile details updated");
     } catch (error) {
-      toast.error("Could not update the profile details");
+      console.error("Error updating user settings:", error.message);
+      toast.error(`Could not update the profile details: ${error.message}`);
     }
   }
   return (
