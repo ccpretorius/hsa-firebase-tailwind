@@ -12,6 +12,7 @@ import Unauthorized from "./pages/Unauthorized";
 import AdminPage from "./pages/AdminPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
