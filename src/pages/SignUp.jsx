@@ -36,14 +36,16 @@ export default function SignUp() {
       // Define default roles and permissions
       const defaultRoles = {
         admin: false,
-        staff: true, // Default role for all new users
+        staff: false, // Default role for all new users
         manager: false,
+        visitor: true,
       };
 
       const defaultPermissions = {
         home: true, // Default permission for home access
-        offers: false,
+        staff: false,
         admin: false,
+        guest: false,
       };
 
       // Prepare user data for Firestore

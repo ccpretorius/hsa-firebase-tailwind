@@ -23,8 +23,8 @@ export default function Header() {
     }
   }
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-40">
-      <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
+    <div className="bg-gray-100 top-0 z-40">
+      <header className="bg-white flex justify-between items-center max-w-7xl mx-auto px-5 border-b shadow-sm sticky">
         <div className="flex items-center">
           <img src={hsa_logo_green_word} alt="logo" className="mt-1 h-12 mb-1 rounded-md cursor-pointer" onClick={() => navigate("/")} />
         </div>
@@ -33,8 +33,11 @@ export default function Header() {
             <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/") && "text-black border-b-red-500"}`} onClick={() => navigate("/")}>
               Home
             </li>
-            <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/offers") && "text-black border-b-red-500"}`} onClick={() => navigate("/offers")}>
-              Offers
+            <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/staff") && "text-black border-b-red-500"}`} onClick={() => navigate("/staff")}>
+              Staff
+            </li>
+            <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/guest") && "text-black border-b-red-500"}`} onClick={() => navigate("/guest")}>
+              Guest
             </li>
             <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/admin") && "text-black border-b-red-500"}`} onClick={() => navigate("/admin")}>
               Admin

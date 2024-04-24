@@ -6,13 +6,13 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword";
-import Offers from "./pages/Offers";
+import Staff from "./pages/Staff";
 import Header from "./components/Header";
 import Unauthorized from "./pages/Unauthorized";
 import AdminPage from "./pages/AdminPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "./components/Footer";
+import Guest from "./pages/Guest";
 
 function App() {
   return (
@@ -26,6 +26,16 @@ function App() {
             element={
               <PrivateRoute requiredPermission="home">
                 <Home />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Guest page with permissions check */}
+          <Route
+            path="/guest"
+            element={
+              <PrivateRoute requiredPermission="guest">
+                <Guest />
               </PrivateRoute>
             }
           />
@@ -47,10 +57,10 @@ function App() {
 
           {/* Offers page with permissions check */}
           <Route
-            path="/offers"
+            path="/staff"
             element={
-              <PrivateRoute requiredPermission="offers">
-                <Offers />
+              <PrivateRoute requiredPermission="staff">
+                <Staff />
               </PrivateRoute>
             }
           />

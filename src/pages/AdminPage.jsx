@@ -10,11 +10,13 @@ const AdminPage = () => {
     admin: false,
     staff: false,
     manager: false,
+    visitor: false,
   });
   const [permissions, setPermissions] = useState({
     home: false,
-    offers: false,
+    staff: false,
     admin: false,
+    guest: false,
   });
   const [usersToReview, setUsersToReview] = useState([]);
 
@@ -54,17 +56,19 @@ const AdminPage = () => {
         admin: false,
         staff: false,
         manager: false,
+        visitor: false,
       });
       setPermissions({
         home: false,
-        offers: false,
+        staff: false,
         admin: false,
+        guest: false,
       });
     } else {
       const selectedUser = users.find((user) => user.id === userId);
       if (selectedUser) {
-        setRoles(selectedUser.roles || { admin: false, staff: false, manager: false });
-        setPermissions(selectedUser.permissions || { home: false, offers: false, admin: false });
+        setRoles(selectedUser.roles || { admin: false, staff: false, manager: false, visitor: false });
+        setPermissions(selectedUser.permissions || { home: false, staff: false, admin: false, guest: false });
       }
     }
   };
@@ -90,7 +94,7 @@ const AdminPage = () => {
           setPermissions(
             userData.permissions || {
               home: false,
-              offers: false,
+              staff: false,
               admin: false,
             }
           );
@@ -122,7 +126,6 @@ const AdminPage = () => {
     }));
   };
 
-  // Handle form submission to update user settings
   // Handle form submission to update user settings
   const handleUpdateUserSettings = async (e) => {
     e.preventDefault();

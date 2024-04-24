@@ -1,10 +1,11 @@
 import React from "react";
 
 const Footer = () => {
+  const tempHandle = () => {};
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p>Email: info@myhemingways.com</p>
@@ -15,33 +16,26 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <li>
+                  <button onClick={tempHandle} style={{ appearance: "none", background: "none", border: "none", padding: 0, color: "lightblue", textDecoration: "underline", cursor: "pointer" }}>
+                    Trainees
+                  </button>
+                </li>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <button onClick={tempHandle} style={{ appearance: "none", background: "none", border: "none", padding: 0, color: "lightblue", textDecoration: "underline", cursor: "pointer" }}>
+                  About us
+                </button>
               </li>
               <li>
-                <a href="#">Services</a>
+                <button onClick={tempHandle} style={{ appearance: "none", background: "none", border: "none", padding: 0, color: "lightblue", textDecoration: "underline", cursor: "pointer" }}>
+                  Services
+                </button>
               </li>
               <li>
-                <a href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Social Media</h3>
-            <ul>
-              <li>
-                <a href="#">Facebook</a>
-              </li>
-              <li>
-                <a href="#">Twitter</a>
-              </li>
-              <li>
-                <a href="#">Instagram</a>
-              </li>
-              <li>
-                <a href="#">LinkedIn</a>
+                <button onClick={tempHandle} style={{ appearance: "none", background: "none", border: "none", padding: 0, color: "lightblue", textDecoration: "underline", cursor: "pointer" }}>
+                  Contact
+                </button>
               </li>
             </ul>
           </div>
